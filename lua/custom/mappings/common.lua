@@ -15,6 +15,12 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set({ 'n', 'v' }, '<C-d>', '<C-d>zz', { desc = 'Move half page down' })
 vim.keymap.set({ 'n', 'v' }, '<C-u>', '<C-u>zz', { desc = 'Move half page up' })
 
+-- Remap movements in Insert mode
+vim.keymap.set('i', '<C-h>', '<Left>', { desc = 'Move left' })
+vim.keymap.set('i', '<C-l>', '<Right>', { desc = 'Move right' })
+vim.keymap.set('i', '<C-j>', '<Down>', { desc = 'Move down' })
+vim.keymap.set('i', '<C-k>', '<Up>', { desc = 'Move up' })
+
 -- Windows navigations
 vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Go to left window' })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Go to right window' })

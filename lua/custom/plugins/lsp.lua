@@ -17,6 +17,18 @@ return {
 
       -- Formatting
       { 'mhartington/formatter.nvim' },
+
+      -- QoL
+      {
+        'j-hui/fidget.nvim',
+        tag = 'legacy',
+        event = 'LspAttach',
+        opts = {
+          text = {
+            spinner = 'dots',
+          },
+        },
+      },
     },
     build = function()
       vim.cmd 'MasonInstallAll'

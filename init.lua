@@ -133,8 +133,8 @@ require('lazy').setup({
 vim.o.hlsearch = false
 
 -- Make line numbers default
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -180,6 +180,9 @@ vim.o.splitright = true
 
 -- Disable word-wrap
 vim.o.wrap = false
+
+-- Wraps left/right movements to previous/next line
+vim.o.whichwrap = vim.o.whichwrap .. ',<,>'
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
