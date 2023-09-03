@@ -79,7 +79,9 @@ require('lazy').setup({
         theme = 'vscode',
       },
       sections = {
-        lualine_c = {},
+        lualine_c = { 'vim.api.nvim_buf_get_name(0)' },
+        lualine_y = { 'progress', 'location' },
+        lualine_z = { 'os.date("%I:%M")' },
       },
     },
   },
