@@ -1,4 +1,4 @@
-local Utils = require 'custom.utils'
+local Util = require 'custom.utils'
 
 return {
   'nvim-neo-tree/neo-tree.nvim',
@@ -42,7 +42,7 @@ return {
     {
       '<leader>e',
       function()
-        require('neo-tree.command').execute { toggle = true, dir = Utils.get_root() }
+        require('neo-tree.command').execute { toggle = true, dir = Util.get_root() }
       end,
       desc = 'Toggle File Explorer',
     },
