@@ -48,7 +48,7 @@ require('lazy').setup({
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
-    keys = { '<leader>', ' ', '<c-r>', '"', "'", '`', 'c', 'v', 'g' },
+    keys = { '<leader>', ' ', '<Space>', '<c-r>', '"', "'", '`', 'c', 'v', 'g', 'd' },
     cmd = 'WhichKey',
     opts = {},
   },

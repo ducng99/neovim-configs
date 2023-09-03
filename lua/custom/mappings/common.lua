@@ -23,8 +23,6 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Go to down window' })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to up window' })
 
 -- Terminal navigations
-vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<M-v>', '<cmd>vsp +term<CR>i', { desc = 'Open terminal in vertical split' })
-vim.keymap.set({ 'n', 'x', 'v', 'i' }, '<M-s>', '<cmd>sp +term<CR>i', { desc = 'Open terminal in horizontal split' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- yank from ThePrimeagen :)
