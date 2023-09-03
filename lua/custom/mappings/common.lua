@@ -25,6 +25,15 @@ vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Go to up window' })
 -- Terminal navigations
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Insert mode shorts
+vim.keymap.set('i', '<M-Del>', function()
+  vim.cmd 'normal! de'
+end, { desc = 'Delete rest of the word' })
+
+vim.keymap.set('i', '<M-BS>', function()
+  vim.cmd 'normal! db'
+end, { desc = 'Delete reset of the word backwards' })
+
 -- yank from ThePrimeagen :)
 -- Keep search results centred
 vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Move to next search match' })

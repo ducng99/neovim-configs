@@ -22,10 +22,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- Git related plugins
-  {
-    'tpope/vim-fugitive',
-    cmd = { 'Git', 'G' },
-  },
+  -- {
+  --   'tpope/vim-fugitive',
+  --   cmd = { 'Git', 'G' },
+  -- },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -108,6 +108,7 @@ require('lazy').setup({
     opts = {},
   },
 
+  -- Highlights selected variable
   {
     'RRethy/vim-illuminate',
     event = { 'BufReadPost', 'BufNewFile' },
@@ -122,10 +123,6 @@ require('lazy').setup({
     end,
   },
 
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 
   { import = 'custom.plugins' },

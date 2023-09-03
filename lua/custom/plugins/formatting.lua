@@ -46,9 +46,21 @@ return {
                 end
               end,
             },
+            svelte = {
+              function()
+                if vim.fn.filereadable '.eslintrc.json' or vim.fn.filereadable '.eslintrc.js' then
+                  return filetypes.typescript.eslint_d()
+                else
+                  return filetypes.svelte.prettier()
+                end
+              end,
+            },
             go = {
               filetypes.go.gofumpt,
-              filetypes.go.gofumports,
+
+              function()
+                vim.lsp.buf.code_action { context = { only = { 'source.organizeImports' } }, apply = true }
+              end,
             },
             php = {
               filetypes.php.php_cs_fixer,
