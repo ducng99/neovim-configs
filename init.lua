@@ -87,7 +87,7 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    event = 'BufEnter',
+    event = { 'BufReadPost', 'BufNewFile' },
     opts = {
       char = '┊',
       show_current_context = true,
@@ -106,6 +106,20 @@ require('lazy').setup({
       { 'gb', mode = 'x', desc = 'Comment toggle blockwise (visual)' },
     },
     opts = {},
+  },
+
+  {
+    'RRethy/vim-illuminate',
+    event = { 'BufReadPost', 'BufNewFile' },
+    config = function()
+      require('illuminate').configure {
+        delay = 200,
+        large_file_cutoff = 2000,
+        large_file_overrides = {
+          providers = { 'lsp' },
+        },
+      }
+    end,
   },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart

@@ -6,7 +6,9 @@ return {
       open_mapping = [[<leader>t]],
       insert_mappings = false,
     },
+    cmd = { 'ToggleTerm', 'TermSelect', 'TermExec' },
     keys = {
+      '<leader>t',
       {
         '<M-v>',
         function()
