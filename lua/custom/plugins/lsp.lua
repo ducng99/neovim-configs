@@ -1,7 +1,7 @@
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     branch = 'v2.x',
     dependencies = {
       -- LSP Support
@@ -72,7 +72,7 @@ return {
         -- Lesser used LSP functionality
         nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-        vim.keymap.set({ 'n', 'x' }, '<leader>fm', '<cmd>Format<CR>', { desc = 'Format document', buffer = bufnr })
+        vim.keymap.set({ 'n', 'v' }, '<leader>fm', vim.cmd.Format, { desc = 'Format document', buffer = bufnr })
       end
 
       lsp.on_attach(on_attach)
@@ -92,7 +92,6 @@ return {
 
       local other_tools = {
         'gofumpt',
-        'goimports-reviser',
         'standardjs',
         'ts-standard',
         'stylua',
