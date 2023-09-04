@@ -29,7 +29,7 @@ require('lazy').setup({
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = 'VeryLazy',
     opts = {
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
@@ -42,7 +42,7 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   {
     'tpope/vim-sleuth',
-    event = 'BufReadPost',
+    event = 'VeryLazy',
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -89,7 +89,7 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = 'VeryLazy',
     opts = {
       char = '┊',
       show_current_context = true,
@@ -113,7 +113,7 @@ require('lazy').setup({
   -- Highlights selected variable
   {
     'RRethy/vim-illuminate',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = 'VeryLazy',
     config = function()
       require('illuminate').configure {
         delay = 200,

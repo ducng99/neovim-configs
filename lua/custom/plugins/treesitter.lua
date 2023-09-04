@@ -3,7 +3,7 @@ return {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     version = false,
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = 'VeryLazy',
     dependencies = {
       {
         'nvim-treesitter/nvim-treesitter-textobjects',

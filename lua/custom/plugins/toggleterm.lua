@@ -3,9 +3,8 @@ return {
     'akinsho/toggleterm.nvim',
     version = '*',
     opts = {
-      open_mapping = [[<leader>t]],
+      open_mapping = "<C-`>",
       insert_mappings = false,
-      terminal_mappings = false,
     },
     cmd = { 'ToggleTerm', 'TermSelect', 'TermExec' },
     keys = {

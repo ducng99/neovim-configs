@@ -1,7 +1,7 @@
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
-    event = { 'BufRead', 'BufWinEnter', 'BufNewFile' },
+    event = 'VeryLazy',
     branch = 'v2.x',
     dependencies = {
       -- LSP Support
@@ -36,7 +36,7 @@ return {
     config = function()
       local lsp = require('lsp-zero').preset {}
 
-      lsp.on_attach(function(_, bufnr)
+      local on_attach = function(_, bufnr)
         local nmap = function(keys, func, desc)
           if desc then
             desc = 'LSP: ' .. desc
@@ -73,7 +73,9 @@ return {
         nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         vim.keymap.set({ 'n', 'x' }, '<leader>fm', '<cmd>Format<CR>', { desc = 'Format document', buffer = bufnr })
-      end)
+      end
+
+      lsp.on_attach(on_attach)
 
       lsp.ensure_installed {
         'cssls',
@@ -82,7 +84,7 @@ return {
         'lua_ls',
         'svelte',
         'tsserver',
-        'intelephense',
+        -- 'intelephense',
         'docker_compose_language_service',
         'dockerls',
         'yamlls',
@@ -111,6 +113,119 @@ return {
 
       -- (Optional) Configure lua language server for neovim
       require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+      require('lspconfig').intelephense.setup {
+        on_attach = on_attach,
+        settings = {
+          intelephense = {
+            associations = { '*.php', '*.inc' },
+            environment = {
+              phpVersion = '8.1.22',
+              shortOpenTag = true,
+            },
+            diagnostics = {
+              undefinedProperties = false,
+            },
+            format = {
+              braces = 'allman',
+            },
+            files = {
+              exclude = {
+                '**/.git/**',
+                '**/.svn/**',
+                '**/.hg/**',
+                '**/CVS/**',
+                '**/.DS_Store/**',
+                '**/node_modules/**',
+                '**/bower_components/**',
+                '**/vendor/**/{Tests,tests}/**',
+                '**/.history/**',
+                '**/vendor/**/vendor/**',
+                '**/*-{oldlive,live}.php',
+                '**/*-dev-current.php',
+                '**/live_archive/**',
+                '**/scripts/{not_used,old,originals}/**',
+                '**/*.back',
+              },
+            },
+            stubs = {
+              'apache',
+              'bcmath',
+              'bz2',
+              'calendar',
+              'com_dotnet',
+              'Core',
+              'ctype',
+              'curl',
+              'date',
+              'dba',
+              'dom',
+              'enchant',
+              'exif',
+              'FFI',
+              'fileinfo',
+              'filter',
+              'fpm',
+              'ftp',
+              'gd',
+              'gettext',
+              'gmp',
+              'hash',
+              'iconv',
+              'imap',
+              'intl',
+              'json',
+              'ldap',
+              'libxml',
+              'mbstring',
+              'meta',
+              'mysqli',
+              'oci8',
+              'odbc',
+              'openssl',
+              'pcntl',
+              'pcre',
+              'PDO',
+              'pdo_ibm',
+              'pdo_mysql',
+              'pdo_pgsql',
+              'pdo_sqlite',
+              'pgsql',
+              'Phar',
+              'posix',
+              'pspell',
+              'readline',
+              'Reflection',
+              'session',
+              'shmop',
+              'SimpleXML',
+              'snmp',
+              'soap',
+              'sockets',
+              'sodium',
+              'SPL',
+              'sqlite3',
+              'standard',
+              'superglobals',
+              'sysvmsg',
+              'sysvsem',
+              'sysvshm',
+              'tidy',
+              'tokenizer',
+              'xml',
+              'xmlreader',
+              'xmlrpc',
+              'xmlwriter',
+              'xsl',
+              'Zend OPcache',
+              'zip',
+              'zlib',
+              'ssh2',
+              'random',
+            },
+          },
+        },
+      }
 
       lsp.setup()
 
