@@ -68,6 +68,9 @@ require('lazy').setup({
           CopilotSuggestion = { fg = '#6b6b6b' },
           CursorLineNr = { fg = '#d4d4d4' },
           CursorLine = {}, -- Disable CursorLine colour. We need cursorline for CursorLineNr only
+          IlluminatedWordText = { bg = '#484848', underline = false },
+          IlluminatedWordRead = { bg = '#484848', underline = false },
+          IlluminatedWordWrite = { bg = '#484848', underline = false },
         },
       }
       require('vscode').load()
