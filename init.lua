@@ -29,7 +29,7 @@ require('lazy').setup({
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
-    event = 'VeryLazy',
+    event = { 'BufReadPre', 'BufNewFile' },
     opts = {
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
@@ -81,7 +81,7 @@ require('lazy').setup({
       sections = {
         lualine_c = { 'vim.api.nvim_buf_get_name(0):gsub(vim.loop.cwd(), "")' },
         lualine_y = { 'location' },
-        lualine_z = { 'os.date("%I:%M")' },
+        lualine_z = { 'os.date("%R")' },
       },
     },
   },
@@ -113,7 +113,7 @@ require('lazy').setup({
   -- Highlights selected variable
   {
     'RRethy/vim-illuminate',
-    event = 'VeryLazy',
+    event = { 'BufReadPost', 'BufNewFile' },
     config = function()
       require('illuminate').configure {
         delay = 200,
@@ -122,6 +122,22 @@ require('lazy').setup({
           providers = { 'lsp' },
         },
       }
+    end,
+  },
+
+  {
+    'stevearc/dressing.nvim',
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require('lazy').load { plugins = { 'dressing.nvim' } }
+        return vim.ui.input(...)
+      end
     end,
   },
 
