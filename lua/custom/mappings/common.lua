@@ -1,10 +1,35 @@
 -- [[ Basic Keymaps ]]
 
+local insert_moveLineStart = function()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+
+  if col == 0 then
+    vim.cmd 'normal! ^a'
+  else
+    vim.cmd 'normal! 0i'
+  end
+end
+
+local normal_moveLineStart = function()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+
+  if col == 0 then
+    vim.cmd 'normal! ^'
+  else
+    vim.cmd 'normal! 0'
+  end
+end
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR>', { desc = 'Clear highlights', silent = true })
 vim.keymap.set({ 'n', 'v', 'i', 'x' }, '<C-c>', '<Esc>', { desc = 'Esc', silent = true, remap = true })
+vim.keymap.set('n', '<Home>', normal_moveLineStart, { desc = 'Move to the beginning of the line' })
+vim.keymap.set('i', '<C-a>', insert_moveLineStart, { desc = 'Move to the beginning of the line' })
+vim.keymap.set('i', '<C-e>', function()
+  vim.cmd 'normal! $'
+end, { desc = 'Move to the end of the line', silent = true })
 
 -- Remap half page navigations
 vim.keymap.set({ 'n', 'v' }, '<C-d>', '<C-d>zz', { desc = 'Move half page down' })

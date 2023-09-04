@@ -66,6 +66,8 @@ require('lazy').setup({
           DiagnosticUnnecessary = { fg = '#73a1bb' },
           CopilotAnnotation = { fg = '#d4d4d4' },
           CopilotSuggestion = { fg = '#6b6b6b' },
+          CursorLineNr = { fg = '#d4d4d4' },
+          CursorLine = {}, -- Disable CursorLine colour. We need cursorline for CursorLineNr only
         },
       }
       require('vscode').load()
@@ -198,6 +200,9 @@ vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
+
+-- Enable cursorline so CursorLineNr can work
+vim.opt.cursorline = true
 
 -- Decrease update time
 vim.opt.updatetime = 50
