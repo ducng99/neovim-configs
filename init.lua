@@ -48,6 +48,7 @@ require('lazy').setup({
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
+    event = 'VeryLazy',
     keys = { '<leader>', ' ', '<Space>', '<c-r>', '"', "'", '`', 'c', 'v', 'g', 'd' },
     cmd = 'WhichKey',
     opts = {},
@@ -61,8 +62,10 @@ require('lazy').setup({
       require('vscode').setup {
         transparent = true,
         disable_nvimtree_bg = true,
-        color_overrides = {
-          vscLeftMid = '#1f1f1f',
+        group_overrides = {
+          DiagnosticUnnecessary = { fg = '#73a1bb' },
+          CopilotAnnotation = { fg = '#d4d4d4' },
+          CopilotSuggestion = { fg = '#6b6b6b' },
         },
       }
       require('vscode').load()
