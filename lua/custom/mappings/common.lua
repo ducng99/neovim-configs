@@ -25,11 +25,9 @@ end
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<Esc>', '<cmd>noh<CR>', { desc = 'Clear highlights', silent = true })
 vim.keymap.set({ 'n', 'v', 'i', 'x' }, '<C-c>', '<Esc>', { desc = 'Esc', silent = true, remap = true })
-vim.keymap.set('n', '<Home>', normal_moveLineStart, { desc = 'Move to the beginning of the line' })
+vim.keymap.set({ 'n', 'i' }, '<Home>', normal_moveLineStart, { desc = 'Move to the beginning of the line' })
 vim.keymap.set('i', '<C-a>', insert_moveLineStart, { desc = 'Move to the beginning of the line' })
-vim.keymap.set('i', '<C-e>', function()
-  vim.cmd 'normal! $'
-end, { desc = 'Move to the end of the line', silent = true })
+vim.keymap.set('i', '<C-e>', '<Esc>$a', { desc = 'Move to the end of the line', silent = true })
 
 -- Remap half page navigations
 vim.keymap.set({ 'n', 'v' }, '<C-d>', '<C-d>zz', { desc = 'Move half page down' })

@@ -87,7 +87,17 @@ require('lazy').setup({
         theme = 'vscode',
       },
       sections = {
-        lualine_c = { 'vim.api.nvim_buf_get_name(0):gsub(vim.loop.cwd(), "")' },
+        lualine_c = {
+          function()
+            local buffer_path = vim.api.nvim_buf_get_name(0)
+            local _, end_index = buffer_path:find(vim.loop.cwd(), 1, true)
+            if end_index then
+              return buffer_path:sub(end_index + 1)
+            else
+              return buffer_path
+            end
+          end,
+        },
         lualine_y = { 'location' },
         lualine_z = { 'os.date("%R")' },
       },
