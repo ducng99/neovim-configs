@@ -3,65 +3,56 @@ return {
   version = '*',
   dependencies = 'nvim-tree/nvim-web-devicons',
   event = 'VeryLazy',
-  config = true,
   opts = {
     options = {
-      modified_icon = '●',
+      separator_style = { '▏', '▕' },
       offsets = {
         {
           filetype = 'neo-tree',
-          text = 'File Explorer',
+          text = 'Explorer',
           text_align = 'left',
           separator = true,
         },
       },
-      hover = {
-        enabled = true,
-        delay = 200,
-        reveal = { 'close' },
-      },
     },
     highlights = {
-      fill = {
-        fg = { attribute = 'fg', highlight = 'Normal' },
-        bg = { attribute = 'bg', highlight = 'StatusLineNC' },
-      },
       background = {
-        fg = { attribute = 'fg', highlight = 'BufferInactive' },
-        bg = { attribute = 'bg', highlight = 'BufferInactive' },
+        fg = { attribute = 'fg', highlight = 'TabLineFill' },
+        bg = { attribute = 'bg', highlight = 'TabLineFill' },
       },
       buffer_visible = {
-        fg = { attribute = 'fg', highlight = 'BufferVisible' },
-        bg = { attribute = 'bg', highlight = 'BufferVisible' },
+        fg = { attribute = 'fg', highlight = 'TabLine' },
+        bg = { attribute = 'bg', highlight = 'TabLine' },
       },
       buffer_selected = {
-        fg = { attribute = 'fg', highlight = 'BufferCurrent' },
-        bg = { attribute = 'bg', highlight = 'BufferCurrent' },
+        fg = { attribute = 'fg', highlight = 'TabLineSel' },
+        bg = { attribute = 'bg', highlight = 'TabLineSel' },
         italic = false,
+        bold = false,
       },
       separator = {
-        fg = { attribute = 'bg', highlight = 'BufferInactive' },
-        bg = { attribute = 'bg', highlight = 'BufferInactive' },
+        fg = { attribute = 'fg', highlight = 'TabLineSeparator' },
+        bg = { attribute = 'bg', highlight = 'TabLineFill' },
       },
       separator_selected = {
-        fg = { attribute = 'fg', highlight = 'Special' },
-        bg = { attribute = 'bg', highlight = 'Normal' },
+        fg = { attribute = 'fg', highlight = 'TabLineSeparator' },
+        bg = { attribute = 'bg', highlight = 'TabLineSel' },
       },
       separator_visible = {
-        fg = { attribute = 'fg', highlight = 'Normal' },
-        bg = { attribute = 'bg', highlight = 'StatusLineNC' },
+        fg = { attribute = 'fg', highlight = 'TabLineSeparator' },
+        bg = { attribute = 'bg', highlight = 'TabLine' },
       },
       close_button = {
-        fg = { attribute = 'fg', highlight = 'BufferInactive' },
-        bg = { attribute = 'bg', highlight = 'BufferInactive' },
+        fg = { attribute = 'fg', highlight = 'TabLineFill' },
+        bg = { attribute = 'bg', highlight = 'TabLineFill' },
       },
       close_button_selected = {
-        fg = { attribute = 'fg', highlight = 'Normal' },
-        bg = { attribute = 'bg', highlight = 'Normal' },
+        fg = { attribute = 'fg', highlight = 'TabLineSel' },
+        bg = { attribute = 'bg', highlight = 'TabLineSel' },
       },
       close_button_visible = {
-        fg = { attribute = 'fg', highlight = 'Normal' },
-        bg = { attribute = 'bg', highlight = 'Normal' },
+        fg = { attribute = 'fg', highlight = 'TabLine' },
+        bg = { attribute = 'bg', highlight = 'TabLine' },
       },
     },
   },
