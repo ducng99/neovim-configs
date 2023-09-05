@@ -71,6 +71,9 @@ require('lazy').setup({
           IlluminatedWordText = { bg = '#484848', underline = false },
           IlluminatedWordRead = { bg = '#484848', underline = false },
           IlluminatedWordWrite = { bg = '#484848', underline = false },
+          ['@attribute'] = { link = '@keyword.function' },
+          ['@keyword.jsdoc'] = { link = '@keyword.function' },
+          ['@text.phpdoc'] = { link = 'Comment' },
         },
       }
       require('vscode').load()
