@@ -29,6 +29,9 @@ vim.keymap.set({ 'n', 'i' }, '<Home>', normal_moveLineStart, { desc = 'Move to t
 vim.keymap.set('i', '<C-a>', insert_moveLineStart, { desc = 'Move to the beginning of the line' })
 vim.keymap.set('i', '<C-e>', '<Esc>$a', { desc = 'Move to the end of the line', silent = true })
 
+-- Disable mouse move event in terminal - cause issues
+vim.keymap.set('t', '<MouseMove>', '<NOP>')
+
 -- Remap half page navigations
 vim.keymap.set({ 'n', 'v' }, '<C-d>', '<C-d>zz', { desc = 'Move half page down' })
 vim.keymap.set({ 'n', 'v' }, '<C-u>', '<C-u>zz', { desc = 'Move half page up' })
