@@ -23,7 +23,7 @@ end
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set('n', '<Esc>', '<cmd>noh<CR>', { desc = 'Clear highlights', silent = true })
+vim.keymap.set('n', '<Esc>', vim.cmd.noh, { desc = 'Clear highlights', silent = true })
 vim.keymap.set({ 'n', 'v', 'i', 'x' }, '<C-c>', '<Esc>', { desc = 'Esc', silent = true, remap = true })
 vim.keymap.set({ 'n', 'i' }, '<Home>', normal_moveLineStart, { desc = 'Move to the beginning of the line' })
 vim.keymap.set('i', '<C-a>', insert_moveLineStart, { desc = 'Move to the beginning of the line' })

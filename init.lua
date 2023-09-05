@@ -65,17 +65,17 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require('vscode').setup {
-        transparent = true,
-        disable_nvimtree_bg = true,
+        -- transparent = true,
+        -- disable_nvimtree_bg = true,
         group_overrides = {
           DiagnosticUnnecessary = { fg = '#73a1bb' },
           CopilotAnnotation = { fg = '#d4d4d4' },
           CopilotSuggestion = { fg = '#6b6b6b' },
           CursorLineNr = { fg = '#d4d4d4' },
           CursorLine = {}, -- Disable CursorLine colour. We need cursorline for CursorLineNr only
-          IlluminatedWordText = { bg = '#484848', underline = false },
-          IlluminatedWordRead = { bg = '#484848', underline = false },
-          IlluminatedWordWrite = { bg = '#484848', underline = false },
+          IlluminatedWordText = { bg = '#484848' },
+          IlluminatedWordRead = { bg = '#484848' },
+          IlluminatedWordWrite = { bg = '#484848' },
           ['@attribute'] = { link = '@keyword.function' },
           ['@keyword.jsdoc'] = { link = '@keyword.function' },
           ['@text.phpdoc'] = { link = 'Comment' },
@@ -113,7 +113,7 @@ require('lazy').setup({
               author = 'You'
             end
 
-            return author .. ', ' .. os.date('%R', vim.b.gitsigns_blame_line_dict.author_time)
+            return author .. ', ' .. require('gitsigns.util').get_relative_time(vim.b.gitsigns_blame_line_dict.author_time)
           end,
           'encoding',
           'fileformat',
@@ -282,3 +282,5 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 -- vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 -- vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+require 'neovide'
