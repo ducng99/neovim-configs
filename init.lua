@@ -31,10 +31,15 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     opts = {
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = false,
+      },
       on_attach = function(bufnr)
         vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+        vim.keymap.set('n', '<leader>gb', require('gitsigns').blame_line, { buffer = bufnr, desc = '[G]it [B]lame' })
       end,
     },
   },
@@ -100,6 +105,19 @@ require('lazy').setup({
               return buffer_path
             end
           end,
+        },
+        lualine_x = {
+          function()
+            local author = vim.b.gitsigns_blame_line_dict.author
+            if vim.b.gitsigns_blame_line_dict.author == 'Not Committed Yet' then
+              author = 'You'
+            end
+
+            return author .. ', ' .. os.date('%R', vim.b.gitsigns_blame_line_dict.author_time)
+          end,
+          'encoding',
+          'fileformat',
+          'filetype',
         },
         lualine_y = { 'location' },
         lualine_z = { 'os.date("%R")' },
